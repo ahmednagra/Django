@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    {% load static %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/Bootstrap.css' %}"  >
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/bootstrap-icons/bootstrap-icons.css' %}"  >
+    
+    <!-- js -->
+    <script src="{% static 'portfolio/js/Bootstrap.js'%}"></script>
+    <script src="{% static 'portfolio/bootstrap-icons/bootstrap-icons.json'%}"></script>
+    <!--custom Css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/custom.css' %}"  >
+    <title>Portfolio-Ahmed</title>
+    <style>
+      /* unvisited link */
+    a:hover {
+    color: #0078ff;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+      }
+    </style>      
+</head>
+
+
+<!-- NAvbar -->
+<div >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="idnav">
+        <div class="container-fluid">
+                <a class="navbar-brand" href="#index">Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link scrollto active" aria-current="page" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#service">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#work">Work</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#blog">Blog</a>
+                </li>
+                </ul>
+                <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div> 
+
