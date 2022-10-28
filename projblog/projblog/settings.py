@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-             # django look into folder static method
+            # django look into folder static method
             # BASE_DIR / "appblog"/"templates"
         ],
         'APP_DIRS': True,
@@ -131,13 +131,13 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "/static/"),
-]    
+]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-#print(STATICFILES_DIRS)
+# print(STATICFILES_DIRS)
 LOGIN_REDIRECT_URL = 'home_page'
 
 LOGIN_URL = 'login'
