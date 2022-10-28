@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Bootstrap CSS -->
     {% load static %} 
-    <link rel="stylesheet" type="text/css" href="{% static 'appblog/css/bootstrap.css' %}"  >
-    
-    
+    <link rel="stylesheet" type="text/css" href="{% static 'appblog/css/bootstrap.css' %}"  >    
     <!--custom Css-->
     <link rel="stylesheet" type="text/css" href="{% static 'appblog/main.css' %}"  >
     {% if title %}
@@ -18,25 +15,25 @@
     {% else %}
         <title> Home-Blog </title>
     {% endif %}
-    
 </head>
 
 <body >
     <!-- header NAvbar -->
+    <div class = "container-fluid">
     <header class= "site-header" >
         <nav class="navbar navbar-expand-sm  navbar-ligh bg-success " id="idnav">
             <div class="container-fluid">
-                    <a class="navbar-brand "  href="{% url 'Home' %}">Blog</a>
+                    <a class="navbar-brand "  href="{% url 'home_page' %}">Blog</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link scrollto active" aria-current="page" href="{% url 'Home' %}">Home</a>
+                        <a class="nav-link scrollto active" aria-current="page" href="{% url 'home_page' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog-about' %}">About</a>
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#service">Service</a>
@@ -55,12 +52,21 @@
                     <!-- navbar right side-->
                     <div class="navbar-nav">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#login">Sign In</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#register">Sign Up</a>
-                            </li>
+                           {% if user.is_authenticated %}
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                 </li>      
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                                </li> 
+                           {% else %}     
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'register' %}" >Register</a>
+                                </li>
+                            {% endif %}    
                         </ul>
                         </a> 
                     <div>
@@ -69,22 +75,24 @@
             </div>
         </nav>
     </header> 
-    
+</div>
     <!-- End header NAvbar -->
-
-    <main role="main" class="container-lg">
-        <div class="row">
-            <div class="col-md-8">
-
+    <main role="main" class="container">
+        <div class="row"> 
+            <div class="col-8"> <br>
                  <!-- Start Content Block -->
+                {% if messages %}
+                {% for message in messages%}
+                <div class="alert alert-{{ message.tags}}">
+                    {{message}}
+                </div>    
+                {% endfor %}
+                {% endif %}
                 {% block content %}
                 {% endblock content %}
-
                  <!-- End Content Block -->
-
             </div>
-
-            <div class="col-md-4">
+            <div class="col-4"> <br>
                 <div class="content-section">
                     <h3> Our Sidebar</h3>
                     <p class="text-muted"> Any Information you can put Here<P>
@@ -99,7 +107,6 @@
             </div>
         </div>
     </main>                       
-
 </body>
 <!-- js -->
 <script src="{% static 'appblog/js/Bootstrap.js'%}"></script>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from matplotlib.style import context
-from requests import post
+from .models import post
+
 
 
 
@@ -25,7 +25,8 @@ posts = [
 
 def home(request):
     context = {
-        'posts' : posts
+        # is query se post model ki timam valus fetch ho jian ge post moodel jo models mein define kiya gaya hai
+        'posts' : post.objects.all()
     }
     return render(request, 'appblog/home.html', context)
 

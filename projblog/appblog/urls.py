@@ -4,10 +4,7 @@ from django.urls import path
 from django.contrib import admin
 from .import views
 
-from django.urls import path , include
-
-
 urlpatterns = [
-    path('', views.home, name='Home'),
-    path('about/', views.about, name='blog-about'),
+    path('', views.home, name='home_page'),
+    path('about/', views.about, name='about'),
 ] 

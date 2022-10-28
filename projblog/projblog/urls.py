@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from users import views as user_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='adminurl'),
     # blank purpose is simple enter ip the browser go to blank appblog.urls where also home is blank so directly run the home page 
     path('', include("appblog.urls")),
+    path('', include("users.urls")),
+   
 ]
+
+

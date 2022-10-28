@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appblog',
-   # 'appblog.apps.AppblogConfig',
+    'users',
+    # 'appblog.apps.AppblogConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIMEZONE = 'Asia/karachi'
+
 
 USE_I18N = True
 
@@ -129,7 +132,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "/static/"),
 ]    
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 #print(STATICFILES_DIRS)
+LOGIN_REDIRECT_URL = 'home_page'
+
+LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
