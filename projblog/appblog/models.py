@@ -1,9 +1,6 @@
-from email.policy import default
-from unittest.util import _MAX_LENGTH
-from certifi import contents
 from django.db import models
-from matplotlib.pyplot import title
 from django.utils import timezone
+from django.urls import reverse
 
 # import user model 
 from django.contrib.auth.models import User
@@ -18,3 +15,8 @@ class post(models.Model):
 #dender method is that start with __
     def __str__(self):
         return self.title
+
+# is se  new post create k bad browser redirect to detail page
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
+    

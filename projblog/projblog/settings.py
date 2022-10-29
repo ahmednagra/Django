@@ -42,8 +42,11 @@ INSTALLED_APPS = [
     'appblog',
     'users',
     # 'appblog.apps.AppblogConfig',
-    'crispy_forms',
+    "crispy_forms",
+   # "crispy_bootstrap5",
 ]
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,13 +132,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#is a file where file upload and oacted on file system
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "/static/"),
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+#CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
-CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # print(STATICFILES_DIRS)
 LOGIN_REDIRECT_URL = 'home_page'

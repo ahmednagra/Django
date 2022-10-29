@@ -23,14 +23,14 @@
     <header class= "site-header" >
         <nav class="navbar navbar-expand-sm  navbar-ligh bg-success " id="idnav">
             <div class="container-fluid">
-                    <a class="navbar-brand "  href="{% url 'home_page' %}">Blog</a>
+                    <a class="navbar-brand "  href="{% url 'Home' %}">Blog</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link scrollto active" aria-current="page" href="{% url 'home_page' %}">Home</a>
+                        <a class="nav-link scrollto active" aria-current="page" href="{% url 'Home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -53,6 +53,9 @@
                     <div class="navbar-nav">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                            {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'post-create' %}">New Post</a>
+                                </li>
                                  <li class="nav-item">
                                      <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                                  </li>      
@@ -66,7 +69,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'register' %}" >Register</a>
                                 </li>
-                            {% endif %}    
+                            {% endif %} 
                         </ul>
                         </a> 
                     <div>
