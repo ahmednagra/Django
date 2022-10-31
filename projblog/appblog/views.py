@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin # UserPassesTestMixin se sirf author he post update ya edit kr skta hia
 # ab post ko listview daikhny k liya
 from django.views.generic import (
@@ -7,7 +8,6 @@ from django.views.generic import (
      CreateView,
      UpdateView, 
      DeleteView )
-from matplotlib.pyplot import cla
 from .models import post
 
 # dummy data a list comprises many dictionaries  list of posts
@@ -40,7 +40,20 @@ class PostListView(ListView):
     template_name = 'appblog/home.html'   
     context_object_name = 'posts'
     ordering = ['-date_posted']  # ( - ) se ab date lastest oper aur older neachy 
+    paginate_by = 3     # for pagination
+    queryset = post.objects.all()  # Default: Model.objects.all()
 
+class UserPostListView(ListView):
+    model = post
+    template_name = 'appblog/user_post.html'   
+    context_object_name = 'posts'
+    paginate_by = 3     # for pagination
+    
+    def get_queryset(self):
+        user =get_object_or_404(User, username=self.kwargs.get('username'))
+        return post.objects.filter(author=user).order_by('-date_posted')
+        
+    
 class PostDetailView(DetailView):
     model = post
 
